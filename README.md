@@ -1,18 +1,62 @@
 # ЕБС-ийн ахлах ангийн хичээлийн хуваарь боловсруулах систем
 
-FastAPI + SQLAlchemy (SQLite) дээр бүтсэн backend. Лаб-8: GitHub Actions CI.
+![Python CI](https://github.com/Sodonchimeg067/School-schedule-2t/actions/workflows/ci.yml/badge.svg)
 
-## Бүтэц
-- `src/main.py` – FastAPI апп (US-01…US-16)
-- `src/t.js` – Node.js: сурагчийн хичээл сонголтын урсгалын загвар
-- `tests/` – pytest автомат тестүүд (in-memory өгөгдлийн сан ашиглана)
-- `.github/workflows/ci.yml` – CI workflow
+Ахлах ангийн сурагчдын сонгон суралцах хичээлийн хуваарийг багшийн цаг, ажлын ачаалал, танхимын хүртээмжийг харгалзан боловсруулах, давхцлыг илрүүлэх, менежерээр батлуулан нийтлэх систем.
+
+## Боломжууд
+- Хэрэглэгч бүртгэх, эрх ялгах 
+- Багш, танхим, хичээлийн мэдээлэл бүртгэх 
+- Хуваарь үүсгэх, багш болон танхимын цагийн давхцал шалгах 
+- Багшийн ачааллын хязгаар 
+- Сурагчийн хичээл сонголт, суудлын хязгаар 
+- Өөрчлөлтийн мэдэгдэл, хуваарь батлах, нийтлэх
+
+## Технологи
+Python 3.12, FastAPI, SQLAlchemy (SQLite), pytest, GitHub Actions
+
+## Төслийн бүтэц
+```
+├── src/
+│   ├── main.py        # FastAPI backend
+│   └── t.js           # Node.js: хичээл сонголтын урсгалын загвар
+├── tests/             # pytest автомат тестүүд
+├── .github/workflows/ci.yml   # CI тохиргоо
+├── requirements.txt
+└── README.md
+```
 
 ## Ажиллуулах заавар
 ```bash
+# 1. Орчин бэлтгэх
 python -m venv .venv
-.venv\Scripts\activate          # Mac/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-uvicorn src.main:app --reload   # http://127.0.0.1:8000/docs
-python -m pytest -v             # тест ажиллуулах
+
+# 2. Серверийг ажиллуулах
+uvicorn src.main:app --reload
+# API баримт: http://127.0.0.1:8000/docs
+
+# 3. Тест ажиллуулах
+python -m pytest -v
 ```
+
+## CI 
+`push` болон `pull_request` бүрд GitHub Actions автоматаар:
+1. Кодыг татна
+2. Python 3.12 бэлтгэнэ
+3. `requirements.txt` суулгана
+4. 17 автомат тестийг ажиллуулна
+
+Ногоон ✓ байвал өөрчлөлтийг нэгтгэж болно. Улаан ✗ байвал **Actions → Run tests** log-ийг уншиж, алдааг засаад дахин push хийнэ.
+
+## Definition of Done
+- Код commit хийгдэж, CI ногоон байх
+- Өөрчлөлт Pull Request-ээр багийн гишүүний хяналтаар орох
+- Автомат тест бичигдсэн, амжилттай ажилласан байх
+- README шинэчлэгдсэн байх
+
+## Баг
+- Б. Төрболд
+- О. Содончимэг
+- С. Анхбаяр
+
