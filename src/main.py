@@ -219,7 +219,7 @@ def generate_schedule(schedule_data: ScheduleCreate, db: Session = Depends(get_d
     # US-09: Багшийн ажлын ачааллыг хязгаарлах (Жишээ нь: 20 цаг)[cite: 16]
     teacher_total_classes = db.query(Schedule).filter_by(
         teacher_id=schedule_data.teacher_id).count()
-    if teacher_total_classes >= 20:
+    if teacher_total_classes > 20:
         raise HTTPException(
             status_code=400, detail="US-09: Багшийн ажлын ачааллын хязгаар хэтэрсэн байна!")
 
